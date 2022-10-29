@@ -19,7 +19,6 @@ namespace indiana_jones_desktop_adventures_ripper.Data
         private const int SpriteH = 32;
         private const string SpritesFolder = "Tiles/";
         private const string SpritesheetFolder = "Spritesheet/";
-        private const string SpriteFilename = "indiana-jones-desktop-adventures";
 
         public TileData(Palette palette)
         {
@@ -48,7 +47,7 @@ namespace indiana_jones_desktop_adventures_ripper.Data
 
                 var img = CreateBitmap(tileData);
 
-                _tiles.Add($"{SpriteFilename}_{nTiles}.png", img);
+                _tiles.Add($"{nTiles}.png", img);
 
                 nTiles++;
             }
@@ -119,7 +118,7 @@ namespace indiana_jones_desktop_adventures_ripper.Data
                 value.SaveAsPng($"{SpritesFolder}/{key}", new PngEncoder());
             }
 
-            spriteSheet.SaveAsPng($"{SpritesheetFolder}/{SpriteFilename}.png", new PngEncoder());
+            spriteSheet.SaveAsPng($"{SpritesheetFolder}/spritesheet.png", new PngEncoder());
         }
     }
 }
