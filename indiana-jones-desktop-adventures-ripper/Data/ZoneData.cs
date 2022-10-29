@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
 using indiana_jones_desktop_adventures_ripper.Data.Base;
 using indiana_jones_desktop_adventures_ripper.Models;
 
@@ -29,32 +31,78 @@ namespace indiana_jones_desktop_adventures_ripper.Data
             
             while (ms.Position != section.Data.Length)
             {
-                /* 12 bytes header */
+                /* 16 bytes header */
                 var iz = new string(br.ReadChars(4));
-                var p = br.ReadUInt16();
-                var unk = br.ReadUInt16();
-                var w = br.ReadUInt16();
+                var p = br.ReadUInt16(); // size block
+                var unk = br.ReadUInt16(); // unknown
+                var w = br.ReadUInt16(); // 
                 var h = br.ReadUInt16();
-                // end of 12 bytes header */
+                var unk2 = br.ReadUInt16(); // unknown = id ??
+                var unk3 = br.ReadUInt16(); // padding
+                // end of 16 bytes header */
                 
-                var zoneData = br.ReadBytes(p - 12);
-                Console.WriteLine($"{iz}_{k} : {w}x{h} block size: {p} bytes");
+                var zoneData = br.ReadBytes(p - 16);
+                
+                ParseZoneData(zoneData);
+                
+                Console.WriteLine($"{iz}_{k} : Unk2? {unk2}, padding {unk3}, {w}x{h} block size: {p} bytes");
+                
                 k++;
             }
-            //var sizeOfBlock = br.ReadBytes(6);
-            //var s = br.ReadBytes(2);
-            //var izon = new string(br.ReadChars(4));
+        }
+
+        private void ParseZoneData(byte[] zoneData)
+        {
+            var ms = new MemoryStream(zoneData);
+            var br = new BinaryReader(ms);
+
+            var sb = new StringBuilder();
+
             
-            //var p = br.ReadInt16();
+            var k = 0;
+            while (ms.Position != zoneData.Length)
+            {
+                var backgroundTile = br.ReadInt16();
+                var midgroundTile = br.ReadInt16();
+                //var backgroundTile = br.ReadUInt32();
+                var foregroundTile = br.ReadInt16();
+                //br.ReadUInt32();
+                //var metadata = br.ReadBytes(4);
+
+                //if (tile == 989)
+                //{
+                //    isFirst = true;
+                //}
+                //if (backgroundTile != 65535) backgroundTile = -1;
+
+                /*
+                if (backgroundTile == -1)
+                {
+                    sb.Append($"{midgroundTile},");
+                }
+                else
+                {
+                    sb.Append($"{backgroundTile},");
+                }
+                */
+
+                sb.Append($"[{backgroundTile},{midgroundTile},{foregroundTile}]");
+                k++;
+                //if(backgroundTile!=65535) sb.Append($"{backgroundTile},");
+                //if(midgroundTile!=65535) sb.Append($"{midgroundTile},");
+                //if(foregroundTile!=65535) sb.Append($"{midgroundTile},");
+
+            }
+            
+            Console.WriteLine($"Entries: {k}: {sb.ToString()}");
+            
             /*
-            var a1 = br.ReadUInt16();
-            var w = br.ReadUInt16();
-            var h = br.ReadUInt16();
-            var x = br.ReadUInt16();
+            if(isFirst)
+            {
+                Console.WriteLine(sb.ToString());
+            }
             */
-            //var zoneData = br.ReadBytes(p - 6);
-            //var izon2 = new string(br.ReadChars(4));
-            //Console.WriteLine("Size: "+izon);
+           
         }
     }
 }
