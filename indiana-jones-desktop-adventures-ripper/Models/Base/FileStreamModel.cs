@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace indiana_jones_desktop_adventures_ripper.Models
+namespace indiana_jones_desktop_adventures_ripper.Models.Base
 {
     public abstract class FileStreamModel
     {

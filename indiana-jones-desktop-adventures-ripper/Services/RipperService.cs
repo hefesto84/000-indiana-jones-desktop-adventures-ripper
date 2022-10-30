@@ -42,7 +42,7 @@ namespace indiana_jones_desktop_adventures_ripper.Services
             _palette = new Palette(_execBinaryFileStream);
             _palette.Extract();
 
-            _sectionService.SetDependencies(_palette);
+            _sectionService.RegisterTypes(_palette);
         }
 
         private void ParseSections()

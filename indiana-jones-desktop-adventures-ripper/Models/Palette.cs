@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using indiana_jones_desktop_adventures_ripper.Models.Base;
 using Color = System.Drawing.Color;
 
 namespace indiana_jones_desktop_adventures_ripper.Models
