@@ -30,14 +30,20 @@ namespace indiana_jones_desktop_adventures_ripper.Services
 
         private const string EndOfFile = "ENDF";
         private Dictionary<string, Section> _dataContents;
-
+        private readonly SpriteService _spriteService;
+        
+        public SectionService(SpriteService spriteService)
+        {
+            _spriteService = spriteService;
+        }
+        
         public void RegisterTypes(Palette palette)
         {
             _dataContents = new Dictionary<string, Section>();
 
             Register(new StupSection());
             Register(new SndsSection());
-            Register(new TileSection(palette));
+            Register(new TileSection(palette, _spriteService));
             Register(new ZoneSection());
             Register(new ZAuxSection());
             Register(new Zax2Data());
@@ -66,7 +72,6 @@ namespace indiana_jones_desktop_adventures_ripper.Services
             var sectionSize = binaryReader.ReadInt32();
             var data = binaryReader.ReadBytes((int)sectionSize);
 
-            //Console.WriteLine($"Detected: {tag}");
             if (_dataContents.ContainsKey(tag)) _dataContents[tag].Parse(new DataBlock(tag, data));
 
             IsEndOfFile = tag.Equals(EndOfFile);

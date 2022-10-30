@@ -9,7 +9,6 @@ namespace indiana_jones_desktop_adventures_ripper.Services
         private readonly BinaryReader _dataBinaryFileStream;
         private readonly BinaryReader _execBinaryFileStream;
         private readonly SectionService _sectionService;
-
         private Palette _palette;
 
         public RipperService(

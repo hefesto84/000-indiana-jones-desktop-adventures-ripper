@@ -8,7 +8,8 @@ namespace indiana_jones_desktop_adventures_ripper
     {
         static void Main(string[] args)
         {
-            var sectionService = new SectionService();
+            var spriteService = new SpriteService();
+            var sectionService = new SectionService(spriteService);
 
             var ripperService = new RipperService(
                 new BinaryReader(File.OpenRead($"{Directory.GetCurrentDirectory()}/Files/DESKTOP.DAW")),
