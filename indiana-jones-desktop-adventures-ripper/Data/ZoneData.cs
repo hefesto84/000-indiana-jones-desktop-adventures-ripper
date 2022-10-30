@@ -33,12 +33,12 @@ namespace indiana_jones_desktop_adventures_ripper.Data
             {
                 /* 16 bytes header */
                 var iz = new string(br.ReadChars(4));
-                var p = br.ReadUInt16(); // size block
-                var unk = br.ReadUInt16(); // unknown
-                var w = br.ReadUInt16(); // 
-                var h = br.ReadUInt16();
-                var unk2 = br.ReadUInt16(); // unknown = id ??
-                var unk3 = br.ReadUInt16(); // padding
+                var p = br.ReadInt16(); // size block
+                var unk = br.ReadInt16(); // unknown
+                var w = br.ReadInt16(); // 
+                var h = br.ReadInt16();
+                var unk2 = br.ReadInt16(); // unknown = id ??
+                var unk3 = br.ReadInt16(); // padding
                 // end of 16 bytes header */
                 
                 var zoneData = br.ReadBytes(p - 16);
@@ -57,52 +57,26 @@ namespace indiana_jones_desktop_adventures_ripper.Data
             var br = new BinaryReader(ms);
 
             var sb = new StringBuilder();
-
             
             var k = 0;
+            
             while (ms.Position != zoneData.Length)
             {
                 var backgroundTile = br.ReadInt16();
                 var midgroundTile = br.ReadInt16();
-                //var backgroundTile = br.ReadUInt32();
                 var foregroundTile = br.ReadInt16();
-                //br.ReadUInt32();
-                //var metadata = br.ReadBytes(4);
-
-                //if (tile == 989)
-                //{
-                //    isFirst = true;
-                //}
-                //if (backgroundTile != 65535) backgroundTile = -1;
-
-                /*
-                if (backgroundTile == -1)
-                {
-                    sb.Append($"{midgroundTile},");
-                }
-                else
-                {
-                    sb.Append($"{backgroundTile},");
-                }
-                */
-
+                
                 sb.Append($"[{backgroundTile},{midgroundTile},{foregroundTile}]");
                 k++;
-                //if(backgroundTile!=65535) sb.Append($"{backgroundTile},");
-                //if(midgroundTile!=65535) sb.Append($"{midgroundTile},");
-                //if(foregroundTile!=65535) sb.Append($"{midgroundTile},");
-
             }
             
             Console.WriteLine($"Entries: {k}: {sb.ToString()}");
-            
-            /*
-            if(isFirst)
-            {
-                Console.WriteLine(sb.ToString());
-            }
-            */
-           
         }
+        
+        // 4 bytes -> zaux
+        // 2 bytes -> size ? 
+        // 4 bytes -> izax
+        // 2 bytes -> size  => 4 + 2 + 8 = 14
+        // 8 bytes -> unknow
     }
 }
