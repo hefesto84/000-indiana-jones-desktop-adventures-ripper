@@ -69,27 +69,10 @@ public class SpriteService
                                 spriteMap[x + (j * SpriteH), y + (i * SpriteW)] = d[x, y];
                             }
                         }
+                        
+                        d.Dispose();
                     }
                 }
-                /*
-                var tileIndex = zone.Tiles[index][0];
-
-                if (tileIndex == -1)
-                {
-                    index++;
-                    break;
-                }
-                
-                var d =  _tiles[zone.Tiles[index][0]].CloneAs<Rgba32>();
-                
-                for (var x = 0; x < SpriteH; x++)
-                {
-                    for (var y = 0; y < SpriteW; y++)
-                    {
-                        spriteMap[x + (j * SpriteH), y + (i * SpriteW)] = d[x, y];
-                    }
-                }
-                */
                 index++;
             }
         }
