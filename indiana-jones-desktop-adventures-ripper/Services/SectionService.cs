@@ -44,7 +44,7 @@ namespace indiana_jones_desktop_adventures_ripper.Services
             Register(new StupSection());
             Register(new SndsSection());
             Register(new TileSection(palette, _spriteService));
-            Register(new ZoneSection());
+            Register(new ZoneSection(_spriteService));
             Register(new ZAuxSection());
             Register(new Zax2Data());
             Register(new Zax3Data());

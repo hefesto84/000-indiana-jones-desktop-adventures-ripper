@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using indiana_jones_desktop_adventures_ripper.Models;
+using indiana_jones_desktop_adventures_ripper.Services;
 
 namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
 {
@@ -9,6 +11,13 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
     {
         public override string Tag => "ZONE";
 
+        private SpriteService _spriteService;
+        
+        public ZoneSection(SpriteService spriteService)
+        {
+            _spriteService = spriteService;
+        }
+        
         public override void Parse(DataBlock dataBlock)
         {
             base.Parse(dataBlock);
@@ -40,7 +49,7 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
                 
                 var zoneData = Br.ReadBytes(p - 16);
                 
-                ParseZoneData(zoneData);
+                ParseZoneData(zoneData, w, h, k);
                 
                 //Console.WriteLine($"{iz}_{k} : Unk2? {unk2}, padding {unk3}, {w}x{h} block size: {p} bytes");
                 
@@ -50,14 +59,20 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
             Console.WriteLine($"IZON structs: {k}");
         }
 
-        private void ParseZoneData(byte[] zoneData)
+        private void ParseZoneData(byte[] zoneData, int w, int h, int k)
         {
             var ms = new MemoryStream(zoneData);
             var br = new BinaryReader(ms);
 
             var sb = new StringBuilder();
-            
-            var k = 0;
+  
+            var zone = new Zone()
+            {
+                K = k,
+                W = w,
+                H = h,
+                Tiles = new List<int[]>(w*h) 
+            };
             
             while (ms.Position != zoneData.Length)
             {
@@ -66,8 +81,14 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
                 var foregroundTile = br.ReadInt16();
                 
                 sb.Append($"[{backgroundTile},{midgroundTile},{foregroundTile}]");
-                k++;
+          
+                zone.Tiles.Add(new int[]{backgroundTile,midgroundTile,foregroundTile});
+                
+                //map.Add((backgroundTile,midgroundTile,foregroundTile));
             }
+            
+            _spriteService.BuildMap(zone);
+            //_spriteService.BuildMap(map, k);
             
             //Console.WriteLine($"Entries: {k}: {sb.ToString()}");
         }
