@@ -88,6 +88,7 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
             }
             
             _spriteService.BuildMap(zone);
+            
             //_spriteService.BuildMap(map, k);
             
             //Console.WriteLine($"Entries: {k}: {sb.ToString()}");

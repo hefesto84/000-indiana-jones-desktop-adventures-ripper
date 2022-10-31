@@ -21,7 +21,11 @@ public class Zax3Data : Section
             var size = Br.ReadInt16();
             var izx3Data = Br.ReadBytes(size - 6);
             
-            Console.WriteLine($"IZX3 Size {size}");
+            
+            if (k == 108)
+            {
+                Console.WriteLine($"IZX3 Size {size}");
+            }
             k++;
         }
         

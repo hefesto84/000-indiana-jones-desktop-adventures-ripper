@@ -20,8 +20,12 @@ public class ZAuxSection : Section
             var izax = new string(Br.ReadChars(4));
             var size = Br.ReadInt16();
             var izaxData = Br.ReadBytes(size - 6);
-            
-            Console.WriteLine($"IZAX Size {size}");
+
+            if (k == 108)
+            {
+                Console.WriteLine($"IZAX Size {size}");
+            }
+
             k++;
         }
         

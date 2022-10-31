@@ -47,7 +47,7 @@ public class SpriteService
         var width = zone.W * SpriteW;
         var height = zone.H * SpriteH;
 
-        var spriteMap = new Image<Argb32>(width, height);
+        var spriteMap = new Image<Rgba32>(width, height);
 
         var index = 0;
         
@@ -59,13 +59,13 @@ public class SpriteService
                 {
                     if (zone.Tiles[index][k] != -1)
                     {
-                        var d =  _tiles[zone.Tiles[index][k]].CloneAs<Argb32>();
+                        var d =  _tiles[zone.Tiles[index][k]].CloneAs<Rgba32>();
                 
                         for (var x = 0; x < SpriteH; x++)
                         {
                             for (var y = 0; y < SpriteW; y++)
                             {
-                                
+                                if(d[x,y].A == 0) continue;
                                 spriteMap[x + (j * SpriteH), y + (i * SpriteW)] = d[x, y];
                             }
                         }
