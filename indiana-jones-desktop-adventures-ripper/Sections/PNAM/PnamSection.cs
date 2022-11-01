@@ -1,3 +1,4 @@
+using System;
 using indiana_jones_desktop_adventures_ripper.Models;
 using indiana_jones_desktop_adventures_ripper.Models.Base;
 
@@ -11,9 +12,14 @@ public class PnamSection : Section
     {
         base.Parse(dataBlock);
         
+        var val = Br.ReadInt16();
+        
+        Console.WriteLine($"PNAM entries: {val}");
+        
         while (Ms.Position != dataBlock.Data.Length)
         {
-            Br.ReadBytes(dataBlock.Data.Length);
+            var name = new string(Br.ReadChars(16));
+            Console.WriteLine($"PNAM Name: {name}");
         }
     }
 }
