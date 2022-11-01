@@ -17,7 +17,7 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.SNDS
             while (Ms.Position != dataBlock.Data.Length)
             {
                 var path = new string(Br.ReadChars(Br.ReadUInt16()));
-                Console.WriteLine($"\\__SNDS: {path}");
+                Console.WriteLine($"SNDS: {path}");
             }
         }
     }

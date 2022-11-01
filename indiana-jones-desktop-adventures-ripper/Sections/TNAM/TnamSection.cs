@@ -1,3 +1,4 @@
+using System;
 using indiana_jones_desktop_adventures_ripper.Models;
 using indiana_jones_desktop_adventures_ripper.Models.Base;
 
@@ -13,7 +14,9 @@ public class TnamSection : Section
 
         while (Ms.Position != dataBlock.Data.Length)
         {
-            Br.ReadBytes(dataBlock.Data.Length);
+            var id = Br.ReadInt16();
+            var name = new string(Br.ReadChars(16));
+            Console.WriteLine($"TNAM: ID: {id} Name: {name}");
         }
     }
 }
