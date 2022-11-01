@@ -13,7 +13,6 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.TILE
     {
         public override string Tag => "TILE";
 
-        private readonly Palette _palette;
         private Dictionary<string, Image> _tiles;
         private const int SpriteW = 32;
         private const int SpriteH = 32;
@@ -22,9 +21,8 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.TILE
 
         private readonly SpriteService _spriteService;
         
-        public TileSection(Palette palette, SpriteService spriteService)
+        public TileSection(SpriteService spriteService)
         {
-            _palette = palette;
             _spriteService = spriteService;
         }
 
@@ -45,7 +43,7 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.TILE
                 var flags = Br.ReadUInt32();
                 var tileData = Br.ReadBytes((int)1024);
 
-                _spriteService.BuildTile(tileData, tileIndex, _palette);
+                _spriteService.BuildTile(tileData, tileIndex);
 
                 tileIndex++;
             }

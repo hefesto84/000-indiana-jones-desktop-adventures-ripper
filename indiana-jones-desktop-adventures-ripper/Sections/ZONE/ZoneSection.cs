@@ -50,9 +50,7 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
                 var zoneData = Br.ReadBytes(p - 16);
                 
                 ParseZoneData(zoneData, w, h, k);
-                
-                //Console.WriteLine($"{iz}_{k} : Unk2? {unk2}, padding {unk3}, {w}x{h} block size: {p} bytes");
-                
+        
                 k++;
             }
             
@@ -83,15 +81,9 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
                 sb.Append($"[{backgroundTile},{midgroundTile},{foregroundTile}]");
           
                 zone.Tiles.Add(new int[]{backgroundTile,midgroundTile,foregroundTile});
-                
-                //map.Add((backgroundTile,midgroundTile,foregroundTile));
             }
             
-            _spriteService.BuildMap(zone);
-            
-            //_spriteService.BuildMap(map, k);
-            
-            //Console.WriteLine($"Entries: {k}: {sb.ToString()}");
+            //_spriteService.BuildMap(zone);
         }
         
         // 4 bytes -> zaux

@@ -16,8 +16,14 @@ public class SpriteService
     private const string SpritesFolder = "Tiles/";
     private const string SpritesheetFolder = "Spritesheet/";
     private Dictionary<int, Image> _tiles = new Dictionary<int, Image>();
-
-    public void BuildTile(byte[] data, int key, Palette palette)
+    private Palette _palette;
+    
+    public void SetPalette(Palette palette)
+    {
+        _palette = palette;
+    }
+    
+    public void BuildTile(byte[] data, int key)
     {
         var ms = new MemoryStream(data);
         var br = new BinaryReader(ms);
@@ -29,7 +35,7 @@ public class SpriteService
             var pixelData = br.ReadByte();
             var pd = (int)pixelData;
 
-            var pixelColor = palette.GetColor(pd);
+            var pixelColor = _palette.GetColor(pd);
 
             var x = j % SpriteW;
             var y = j / SpriteH;

@@ -21,10 +21,7 @@ public class ZAuxSection : Section
             var size = Br.ReadInt16();
             var izaxData = Br.ReadBytes(size - 6);
 
-            if (k == 108)
-            {
-                Console.WriteLine($"IZAX Size {size}");
-            }
+            Console.WriteLine($"IZAX Size {size}");
 
             k++;
         }

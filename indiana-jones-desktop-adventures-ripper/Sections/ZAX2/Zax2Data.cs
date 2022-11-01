@@ -21,10 +21,7 @@ public class Zax2Data : Section
             var size = Br.ReadInt16();
             var izx2Data = Br.ReadBytes(size - 6);
 
-            if (k == 108)
-            {
-                Console.WriteLine($"IZX2 Size {size}");
-            }
+            Console.WriteLine($"IZX2 Size {size}");
 
             k++;
         }

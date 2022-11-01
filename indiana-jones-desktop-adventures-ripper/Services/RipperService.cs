@@ -9,25 +9,27 @@ namespace indiana_jones_desktop_adventures_ripper.Services
         private readonly BinaryReader _dataBinaryFileStream;
         private readonly BinaryReader _execBinaryFileStream;
         private readonly SectionService _sectionService;
+        private readonly SpriteService _spriteService;
         private Palette _palette;
 
         public RipperService(
             BinaryReader dataBinaryFileStream,
             BinaryReader execBinaryFileStream,
-            SectionService sectionService)
+            SectionService sectionService,
+            SpriteService spriteService)
         {
             _dataBinaryFileStream = dataBinaryFileStream;
             _execBinaryFileStream = execBinaryFileStream;
             _sectionService = sectionService;
+            _spriteService = spriteService;
         }
 
         public void Rip()
         {
             CheckFileStreams();
 
-            SetupPalette();
-
-            ParseSections();
+            ParseExeSections();
+            ParseDawSections();
         }
 
         private void CheckFileStreams()
@@ -36,15 +38,7 @@ namespace indiana_jones_desktop_adventures_ripper.Services
                 throw new Exception("Error reading data.");
         }
 
-        private void SetupPalette()
-        {
-            _palette = new Palette(_execBinaryFileStream);
-            _palette.Extract();
-
-            _sectionService.RegisterTypes(_palette);
-        }
-
-        private void ParseSections()
+        private void ParseDawSections()
         {
             var s = _dataBinaryFileStream.ReadChars(4);
             var section1 = new string(s);
@@ -54,6 +48,13 @@ namespace indiana_jones_desktop_adventures_ripper.Services
             {
                 _sectionService.GetSection(_dataBinaryFileStream);
             }
+        }
+
+        private void ParseExeSections()
+        {
+            _palette = new Palette(_execBinaryFileStream);
+            _palette.Extract();
+            _spriteService.SetPalette(_palette);
         }
     }
 }

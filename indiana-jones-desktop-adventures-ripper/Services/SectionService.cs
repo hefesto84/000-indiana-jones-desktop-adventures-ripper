@@ -31,19 +31,25 @@ namespace indiana_jones_desktop_adventures_ripper.Services
         private const string EndOfFile = "ENDF";
         private Dictionary<string, Section> _dataContents;
         private readonly SpriteService _spriteService;
-        
+
         public SectionService(SpriteService spriteService)
         {
             _spriteService = spriteService;
+            _dataContents = new Dictionary<string, Section>();
+            
+            RegisterTypes();
+        }
+
+        public void SetPalette(Palette palette)
+        {
+                
         }
         
-        public void RegisterTypes(Palette palette)
+        private void RegisterTypes()
         {
-            _dataContents = new Dictionary<string, Section>();
-
             Register(new StupSection());
             Register(new SndsSection());
-            Register(new TileSection(palette, _spriteService));
+            Register(new TileSection(_spriteService));
             Register(new ZoneSection(_spriteService));
             Register(new ZAuxSection());
             Register(new Zax2Data());

@@ -20,12 +20,8 @@ public class Zax3Data : Section
             var izx3 = new string(Br.ReadChars(4));
             var size = Br.ReadInt16();
             var izx3Data = Br.ReadBytes(size - 6);
-            
-            
-            if (k == 108)
-            {
-                Console.WriteLine($"IZX3 Size {size}");
-            }
+
+            Console.WriteLine($"IZX3 Size {size}");
             k++;
         }
         

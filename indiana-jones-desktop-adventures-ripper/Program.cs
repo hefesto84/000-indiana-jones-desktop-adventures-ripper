@@ -14,7 +14,7 @@ namespace indiana_jones_desktop_adventures_ripper
             var ripperService = new RipperService(
                 new BinaryReader(File.OpenRead($"{Directory.GetCurrentDirectory()}/Files/DESKTOP.DAW")),
                 new BinaryReader(File.OpenRead($"{Directory.GetCurrentDirectory()}/Files/DESKADV.EXE")),
-                sectionService);
+                sectionService,spriteService);
 
             ripperService.Rip();
         }
