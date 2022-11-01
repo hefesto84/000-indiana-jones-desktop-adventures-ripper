@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using indiana_jones_desktop_adventures_ripper.Models;
 
 namespace indiana_jones_desktop_adventures_ripper.Services
 {
@@ -10,7 +9,6 @@ namespace indiana_jones_desktop_adventures_ripper.Services
         private readonly BinaryReader _execBinaryFileStream;
         private readonly SectionService _sectionService;
         private readonly SpriteService _spriteService;
-        private Palette _palette;
 
         public RipperService(
             BinaryReader dataBinaryFileStream,
@@ -46,15 +44,14 @@ namespace indiana_jones_desktop_adventures_ripper.Services
 
             while (!_sectionService.IsEndOfFile)
             {
-                _sectionService.GetSection(_dataBinaryFileStream);
+                _sectionService.GetDawSections(_dataBinaryFileStream);
             }
         }
 
         private void ParseExeSections()
         {
-            _palette = new Palette(_execBinaryFileStream);
-            _palette.Extract();
-            _spriteService.SetPalette(_palette);
+            _sectionService.GetExeSections(_execBinaryFileStream, out var palette);
+            _spriteService.SetPalette(palette);
         }
     }
 }

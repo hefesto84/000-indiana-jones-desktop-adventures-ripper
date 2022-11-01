@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using indiana_jones_desktop_adventures_ripper.Models;
+using indiana_jones_desktop_adventures_ripper.Models.Base;
 using indiana_jones_desktop_adventures_ripper.Services;
 
 namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE

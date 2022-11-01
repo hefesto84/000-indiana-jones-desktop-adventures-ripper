@@ -1,5 +1,6 @@
 ﻿using System;
 using indiana_jones_desktop_adventures_ripper.Models;
+using indiana_jones_desktop_adventures_ripper.Models.Base;
 
 namespace indiana_jones_desktop_adventures_ripper.Sections.STUP
 {

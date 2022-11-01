@@ -6,7 +6,7 @@ namespace indiana_jones_desktop_adventures_ripper.Models
 {
     public class Palette : FileStreamModel
     {
-        private const int OffsetPalette = 0x36656;
+        
         private const int PaletteSize = 1024;
         private const int PaletteColors = 256;
 
@@ -14,9 +14,9 @@ namespace indiana_jones_desktop_adventures_ripper.Models
 
         public Palette(BinaryReader execBinaryFileStream) : base(execBinaryFileStream) { }
 
-        public void Extract()
+        public Palette Extract(int offset)
         {
-            Fs.BaseStream.Position = OffsetPalette;
+            Fs.BaseStream.Position = offset;
 
             var data = Fs.ReadBytes(PaletteSize);
 
@@ -31,6 +31,8 @@ namespace indiana_jones_desktop_adventures_ripper.Models
 
             br.Close();
             ms.Close();
+
+            return this;
         }
 
         public Color GetColor(int index)

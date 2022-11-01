@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using indiana_jones_desktop_adventures_ripper.Models;
+using indiana_jones_desktop_adventures_ripper.Models.Base;
 using indiana_jones_desktop_adventures_ripper.Sections;
 using indiana_jones_desktop_adventures_ripper.Sections.ACTN;
 using indiana_jones_desktop_adventures_ripper.Sections.ANAM;
 using indiana_jones_desktop_adventures_ripper.Sections.CAUX;
 using indiana_jones_desktop_adventures_ripper.Sections.CHAR;
 using indiana_jones_desktop_adventures_ripper.Sections.CHWP;
+using indiana_jones_desktop_adventures_ripper.Sections.EXE;
 using indiana_jones_desktop_adventures_ripper.Sections.HTSP;
 using indiana_jones_desktop_adventures_ripper.Sections.PNAM;
 using indiana_jones_desktop_adventures_ripper.Sections.PUZ2;
@@ -29,58 +31,73 @@ namespace indiana_jones_desktop_adventures_ripper.Services
         public bool IsEndOfFile { get; private set; }
 
         private const string EndOfFile = "ENDF";
-        private Dictionary<string, Section> _dataContents;
+        
+        private readonly Dictionary<string, Section> _dawDataContents;
+        private readonly Dictionary<string, ExeSection> _exeDataContents;
+        
         private readonly SpriteService _spriteService;
 
         public SectionService(SpriteService spriteService)
         {
             _spriteService = spriteService;
-            _dataContents = new Dictionary<string, Section>();
+            _dawDataContents = new Dictionary<string, Section>();
+            _exeDataContents = new Dictionary<string, ExeSection>();
             
-            RegisterTypes();
+            RegisterDawTypes();
+            RegisterExeTypes();
         }
 
-        public void SetPalette(Palette palette)
+        private void RegisterDawTypes()
         {
-                
-        }
-        
-        private void RegisterTypes()
-        {
-            Register(new StupSection());
-            Register(new SndsSection());
-            Register(new TileSection(_spriteService));
-            Register(new ZoneSection(_spriteService));
-            Register(new ZAuxSection());
-            Register(new Zax2Data());
-            Register(new Zax3Data());
-            Register(new Zax4Data());
-            Register(new HtspSection());
-            Register(new ActnSection());
-            Register(new Puz2Data());
-            Register(new CharSection());
-            Register(new ChwpSection());
-            Register(new CauxSection());
-            Register(new TnamSection());
-            Register(new ZnamSection());
-            Register(new PnamSection());
-            Register(new AnamSection());
+            RegisterDawSection(new StupSection());
+            RegisterDawSection(new SndsSection());
+            RegisterDawSection(new TileSection(_spriteService));
+            RegisterDawSection(new ZoneSection(_spriteService));
+            RegisterDawSection(new ZAuxSection());
+            RegisterDawSection(new Zax2Data());
+            RegisterDawSection(new Zax3Data());
+            RegisterDawSection(new Zax4Data());
+            RegisterDawSection(new HtspSection());
+            RegisterDawSection(new ActnSection());
+            RegisterDawSection(new Puz2Data());
+            RegisterDawSection(new CharSection());
+            RegisterDawSection(new ChwpSection());
+            RegisterDawSection(new CauxSection());
+            RegisterDawSection(new TnamSection());
+            RegisterDawSection(new ZnamSection());
+            RegisterDawSection(new PnamSection());
+            RegisterDawSection(new AnamSection());
         }
 
-        private void Register(Section d)
+        private void RegisterExeTypes()
         {
-            _dataContents.Add(d.Tag, d);
+            RegisterExeSection(new ExeSection());
+        }
+
+        private void RegisterDawSection(Section d)
+        {
+            _dawDataContents.Add(d.Tag, d);
+        }
+
+        private void RegisterExeSection(ExeSection d)
+        {
+            _exeDataContents.Add(d.Tag, d);
         }
         
-        public void GetSection(BinaryReader binaryReader)
+        public void GetDawSections(BinaryReader binaryReader)
         {
             var tag = new string(binaryReader.ReadChars(4));
             var sectionSize = binaryReader.ReadInt32();
             var data = binaryReader.ReadBytes((int)sectionSize);
 
-            if (_dataContents.ContainsKey(tag)) _dataContents[tag].Parse(new DataBlock(tag, data));
+            if (_dawDataContents.ContainsKey(tag)) _dawDataContents[tag].Parse(new DataBlock(tag, data));
 
             IsEndOfFile = tag.Equals(EndOfFile);
+        }
+
+        public void GetExeSections(BinaryReader binaryReader, out Palette palette)
+        {
+            _exeDataContents["EXE"].Parse(new ExeBlock(binaryReader), out palette);
         }
     }
 }

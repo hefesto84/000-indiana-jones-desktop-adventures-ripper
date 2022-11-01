@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using indiana_jones_desktop_adventures_ripper.Models;
+using indiana_jones_desktop_adventures_ripper.Models.Base;
 using indiana_jones_desktop_adventures_ripper.Services;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
