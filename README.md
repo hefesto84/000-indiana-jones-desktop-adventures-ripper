@@ -25,7 +25,7 @@ The idea is having this data for anyone interested on do a remake of the origina
 | HTSP        | Pending    | Unknown        |
 | CHWP        | Pending    | Unknown        |
 | CAUX        | Pending    | Unknown        |
-| CHAR        | Pending    | Unknown        |
+| CHAR        | In progress| Animations     |
 | ACTN        | Pending    | Unknown        |
 
 ## Single Sprites Result (32x32)
