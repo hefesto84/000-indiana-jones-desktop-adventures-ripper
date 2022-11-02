@@ -10,7 +10,9 @@ public class AnamSection : Section
     public override void Parse(DataBlock dataBlock)
     {
         base.Parse(dataBlock);
-   
+
+        var val = Br.ReadInt32();
+        
         while (Ms.Position != dataBlock.Data.Length)
         {
             Br.ReadBytes(dataBlock.Data.Length);

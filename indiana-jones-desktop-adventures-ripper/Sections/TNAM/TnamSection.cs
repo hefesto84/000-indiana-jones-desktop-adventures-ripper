@@ -16,7 +16,8 @@ public class TnamSection : Section
         {
             var id = Br.ReadInt16();
             var name = new string(Br.ReadChars(16));
-            Console.WriteLine($"TNAM: ID: {id} Name: {name}");
+            
+            Console.WriteLine($"{Tag}: ID: {id} Name: {name}");
         }
     }
 }

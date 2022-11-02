@@ -21,10 +21,7 @@ public class Zax4Data : Section
             var izx4 = new string(Br.ReadChars(4));
             var unknown = Br.ReadBytes(6);
             
-            if (k == 108)
-            {
-                Console.WriteLine($"IZX4 Size");
-            }
+            //Console.WriteLine($"IZX4 Size");
             
             k++;
         }

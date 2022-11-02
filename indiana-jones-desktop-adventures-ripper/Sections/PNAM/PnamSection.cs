@@ -14,12 +14,13 @@ public class PnamSection : Section
         
         var val = Br.ReadInt16();
         
-        Console.WriteLine($"PNAM entries: {val}");
+        Console.WriteLine($"{Tag} entries: {val}");
         
         while (Ms.Position != dataBlock.Data.Length)
         {
             var name = new string(Br.ReadChars(16));
-            Console.WriteLine($"PNAM Name: {name}");
+            
+            Console.WriteLine($"{Tag} Name: {name}");
         }
     }
 }
