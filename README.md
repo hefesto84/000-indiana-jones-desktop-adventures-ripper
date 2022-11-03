@@ -16,7 +16,7 @@ The idea is having this data for anyone interested on do a remake of the origina
 | TNAM        | Done        | Object names   |
 | ZONE        | Done        | Maps (png)     |
 | CHAR        | Done        | Animations     |
-| ZNAM        | In progress | Map names      |
+| ZNAM        | Done        | Map names      |
 | ZAUX        | Done        | Unknown        |
 | ZAX2        | Done        | Map items?     |
 | ZAX3        | Done        | Unknown        |
