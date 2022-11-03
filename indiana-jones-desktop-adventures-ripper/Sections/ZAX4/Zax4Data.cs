@@ -24,7 +24,7 @@ public class Zax4Data : Section
             
             //Console.WriteLine($"IZX4 Size");
             
-            if (k == 333)
+            if (k == 103)
             {
                 File.WriteAllBytes("izax4-aux.dat",unknown);
             }

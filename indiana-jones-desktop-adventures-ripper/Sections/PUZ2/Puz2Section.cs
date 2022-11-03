@@ -29,6 +29,8 @@ public class Puz2Section : Section
             
             k++;
         }
+        
+        Console.WriteLine($"PUZ Entries: {k}");
     }
 
     private void ParsePuzSection(byte[] data, int k)

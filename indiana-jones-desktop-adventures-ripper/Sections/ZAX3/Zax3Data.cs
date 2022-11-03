@@ -25,7 +25,7 @@ public class Zax3Data : Section
 
             //Console.WriteLine($"IZX3 Size {size}");
             
-            if (k == 333)
+            if (k == 103)
             {
                 File.WriteAllBytes("izax3-aux.dat",izx3Data);
             }

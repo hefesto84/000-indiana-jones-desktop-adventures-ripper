@@ -25,7 +25,7 @@ public class ZAuxSection : Section
 
             //Console.WriteLine($"IZAX Size {size}");
 
-            if (k == 333)
+            if (k == 103)
             {
                 File.WriteAllBytes("izax-aux.dat",izaxData);
             }

@@ -52,10 +52,11 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
                 
                 ParseZoneData(zoneData, w, h, k);
         
+                Console.WriteLine($"IZON structs: {k} - unk2: {unk2} unk3: {unk3}");
                 k++;
             }
             
-            Console.WriteLine($"IZON structs: {k}");
+            
         }
 
         private void ParseZoneData(byte[] zoneData, int w, int h, int k)

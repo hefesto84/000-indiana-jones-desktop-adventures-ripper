@@ -17,6 +17,7 @@ public class Zax2Data : Section
 
         var k = 0;
         
+        // IZAX -> sembla que te els elements del nivell
         while (Ms.Position != dataBlock.Data.Length)
         {
             var izx2 = new string(Br.ReadChars(4));
@@ -24,7 +25,7 @@ public class Zax2Data : Section
             var izx2Data = Br.ReadBytes(size - 6);
 
             //Console.WriteLine($"IZX2 Size {size}");
-            if (k == 333)
+            if (k == 103)
             {
                 File.WriteAllBytes("izax2-aux.dat",izx2Data);
             }

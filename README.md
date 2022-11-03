@@ -6,27 +6,27 @@ The idea is having this data for anyone interested on do a remake of the origina
 
 ## Section Status
 
-| **Section** | **Status** | **Known Data** |
-|-------------|------------|----------------|
-| EXE         | Done       | In progress    |
-| PAL         | Done       | Palette        |
-| STUP        | Done       | Setup file     |
-| SNDS        | Done       | Sound paths    |
-| TILE        | Done       | Tiles (png)    |
-| TNAM        | Done       | Object names   |
-| ZONE        | Done       | Maps (png)     |
-| ZAUX        | Done       | Unknown        |
-| ZAX2        | Done       | Unknown        |
-| ZAX3        | Done       | Unknown        |
-| ZAX4        | Done       | Unknown        |
-| ZNAM        | Pending    | Unknown        |
-| PNAM        | Done       | Unknown        |
-| PUZ2        | Pending    | Unknown        |
-| HTSP        | Pending    | Unknown        |
-| CHWP        | Pending    | Unknown        |
-| CAUX        | Pending    | Unknown        |
-| CHAR        | In progress| Animations     |
-| ACTN        | Pending    | Unknown        |
+| **Section** | **Status**  | **Known Data** |
+|-------------|-------------|----------------|
+| EXE         | Done        | In progress    |
+| PAL         | Done        | Palette        |
+| STUP        | Done        | Setup file     |
+| SNDS        | Done        | Sound paths    |
+| TILE        | Done        | Tiles (png)    |
+| TNAM        | Done        | Object names   |
+| ZONE        | Done        | Maps (png)     |
+| CHAR        | Done        | Animations     |
+| ZNAM        | In progress | Map names      |
+| ZAUX        | Done        | Unknown        |
+| ZAX2        | Done        | Map items?     |
+| ZAX3        | Done        | Unknown        |
+| ZAX4        | Done        | Unknown        |
+| PNAM        | Done        | Unknown        |
+| PUZ2        | Pending     | Unknown        |
+| HTSP        | Pending     | Unknown        |
+| CHWP        | Pending     | Unknown        |
+| CAUX        | Pending     | Unknown        |
+| ACTN        | Pending     | Unknown        |
 
 ## Single Sprites Result (32x32)
 
