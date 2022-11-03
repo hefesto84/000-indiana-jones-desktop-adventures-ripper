@@ -6,27 +6,27 @@ The idea is having this data for anyone interested on do a remake of the origina
 
 ## Section Status
 
-| **Section** | **Status**  | **Known Data** |
-|-------------|-------------|----------------|
-| EXE         | Done        | In progress    |
-| PAL         | Done        | Palette        |
-| STUP        | Done        | Setup file     |
-| SNDS        | Done        | Sound paths    |
-| TILE        | Done        | Tiles (png)    |
-| TNAM        | Done        | Object names   |
-| ZONE        | Done        | Maps (png)     |
-| CHAR        | Done        | Animations     |
-| ZNAM        | Done        | Map names      |
-| ZAUX        | Done        | Unknown        |
-| ZAX2        | Done        | Map items?     |
-| ZAX3        | Done        | Unknown        |
-| ZAX4        | Done        | Unknown        |
-| PNAM        | Done        | Unknown        |
-| PUZ2        | Pending     | Unknown        |
-| HTSP        | Pending     | Unknown        |
-| CHWP        | Pending     | Unknown        |
-| CAUX        | Pending     | Unknown        |
-| ACTN        | Pending     | Unknown        |
+| **Section** | **Status**                                             | **Known Data** |
+|-------------|--------------------------------------------------------|----------------|
+| EXE         | ![](https://img.shields.io/badge/-DONE-green)    | In progress    |
+| PAL         | ![](https://img.shields.io/badge/-DONE-green)    | Palette        |
+| STUP        | ![](https://img.shields.io/badge/-DONE-green)    | Setup file     |
+| SNDS        | ![](https://img.shields.io/badge/-DONE-green)    | Sound paths    |
+| TILE        | ![](https://img.shields.io/badge/-DONE-green)    | Tiles (png)    |
+| TNAM        | ![](https://img.shields.io/badge/-DONE-green)    | Object names   |
+| ZONE        | ![](https://img.shields.io/badge/-DONE-green)    | Maps (png)     |
+| CHAR        | ![](https://img.shields.io/badge/-DONE-green)    | Animations     |
+| ZNAM        | ![](https://img.shields.io/badge/-DONE-green)    | Map names      |
+| ZAUX        | ![](https://img.shields.io/badge/-PENDING-yellow) | Unknown        |
+| ZAX2        | ![](https://img.shields.io/badge/-PENDING-yellow)  | Map items?     |
+| ZAX3        | ![](https://img.shields.io/badge/-PENDING-yellow)   | Unknown        |
+| ZAX4        | ![](https://img.shields.io/badge/-PENDING-yellow)   | Unknown        |
+| PNAM        | ![](https://img.shields.io/badge/-PENDING-yellow)    | Unknown        |
+| PUZ2        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown        |
+| HTSP        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown        |
+| CHWP        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown        |
+| CAUX        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown        |
+| ACTN        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown        |
 
 ## Single Sprites Result (32x32)
 
