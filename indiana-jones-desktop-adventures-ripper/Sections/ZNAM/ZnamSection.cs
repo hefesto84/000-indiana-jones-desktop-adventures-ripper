@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Text;
 using indiana_jones_desktop_adventures_ripper.Models;
 using indiana_jones_desktop_adventures_ripper.Models.Base;
 
@@ -12,28 +14,30 @@ public class ZnamSection : Section
     {
         base.Parse(dataBlock);
 
-        //var size = Br.ReadInt32();
-        var offset = Br.ReadInt16();
-
-        //var data = new string(Br.ReadChars(4));
-        //var val = Br.ReadBytes(6);
-        
-        //Console.WriteLine($"{Tag} entries: {val}");
-
-        var k = 0;
-        
         while (Ms.Position != dataBlock.Data.Length)
         {
-            //var znamData = new string(Br.ReadChars(12));
-            //Br.ReadBytes(dataBlock.Data.Length);
-            //Console.WriteLine($"{Tag} Entry : {new string(Br.ReadChars(10))}");
-            //var data = Br.ReadBytes(10);
-            var name = Br.ReadChars(9);
-            Br.ReadBytes(9);
-            Console.WriteLine($"{Tag} Entry : {new string(name)}");
-            k++;
+            var data = Br.ReadBytes(18);
+            ParseZnamData(data);
         }
+    }
+
+    private void ParseZnamData(byte[] znamData)
+    {
+        var ms = new MemoryStream(znamData);
+        var br = new BinaryReader(ms);
         
-        Console.WriteLine($"{Tag} entries: {k}");
+        var b = br.ReadInt16(); // MAP ID!
+
+        if (b == -1) return;
+
+        var data = br.ReadBytes(16);
+
+        var i = 0;
+        
+        while (data[i] != 0) { i++; }
+
+        var name = Encoding.UTF8.GetString(data, 0, i);
+        
+        Console.WriteLine($"{Tag} Entry: {b} with data: {name}");
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using indiana_jones_desktop_adventures_ripper.Models;
 using indiana_jones_desktop_adventures_ripper.Models.Base;
 using indiana_jones_desktop_adventures_ripper.Services;
@@ -27,7 +28,7 @@ public class CharSection : Section
         {
             var ichad = new string(Br.ReadChars(5));
             Br.ReadBytes(3);
-            var ichadName = new string(Br.ReadChars(16));
+            var ichadName = ParseName(Br.ReadBytes(16));
             var unknown1 = Br.ReadInt16();
             var unknown2 = Br.ReadInt16();
 
@@ -44,13 +45,22 @@ public class CharSection : Section
             
             _spriteService.BuildAnimation(new Anim
             {
-                Id = ichadName.Trim(),
+                Id = ichadName,
                 Tiles = tileIds.ToArray()
             });
             
-            Console.WriteLine($"{Tag}-{k}: {ichadName} - {tileIds[tileIds.Count-1]}");
+            Console.WriteLine($"{Tag}-{k}: {ichadName}");
             
             k++;
         }
+    }
+
+    private string ParseName(byte[] data)
+    {
+        var i = 0;
+        
+        while (data[i] != 0) { i++; }
+
+        return  Encoding.UTF8.GetString(data, 0, i);
     }
 }
