@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using indiana_jones_desktop_adventures_ripper.Models;
 using indiana_jones_desktop_adventures_ripper.Models.Base;
 
@@ -23,7 +24,10 @@ public class Zax2Data : Section
             var izx2Data = Br.ReadBytes(size - 6);
 
             //Console.WriteLine($"IZX2 Size {size}");
-
+            if (k == 333)
+            {
+                File.WriteAllBytes("izax2-aux.dat",izx2Data);
+            }
             k++;
         }
         

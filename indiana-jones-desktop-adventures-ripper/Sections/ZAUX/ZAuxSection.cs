@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using indiana_jones_desktop_adventures_ripper.Models;
 using indiana_jones_desktop_adventures_ripper.Models.Base;
 
@@ -24,6 +25,10 @@ public class ZAuxSection : Section
 
             //Console.WriteLine($"IZAX Size {size}");
 
+            if (k == 333)
+            {
+                File.WriteAllBytes("izax-aux.dat",izaxData);
+            }
             k++;
         }
         

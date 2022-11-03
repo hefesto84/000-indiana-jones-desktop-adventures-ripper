@@ -60,7 +60,7 @@ namespace indiana_jones_desktop_adventures_ripper.Services
             RegisterDawSection(new HtspSection());
             RegisterDawSection(new ActnSection());
             RegisterDawSection(new Puz2Section());
-            RegisterDawSection(new CharSection());
+            RegisterDawSection(new CharSection(_spriteService));
             RegisterDawSection(new ChwpSection());
             RegisterDawSection(new CauxSection());
             RegisterDawSection(new TnamSection());

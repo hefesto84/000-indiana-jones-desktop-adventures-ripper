@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using indiana_jones_desktop_adventures_ripper.Models;
+using indiana_jones_desktop_adventures_ripper.Sections.CHAR;
 using indiana_jones_desktop_adventures_ripper.Sections.ZONE;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
@@ -15,6 +16,7 @@ public class SpriteService
     private const int SpriteH = 32;
     private const string SpritesFolder = "Tiles/";
     private const string SpritesheetFolder = "Spritesheet/";
+    private const string AnimationsFolder = "Animations/";
     private Dictionary<int, Image> _tiles = new Dictionary<int, Image>();
     private Palette _palette;
     
@@ -48,10 +50,10 @@ public class SpriteService
         _tiles.Add(key,img);
     }
 
-    public void BuildMap(Zone zone)
+    public void BuildMap(Zone zone, int w, int h)
     {
-        var width = zone.W * SpriteW;
-        var height = zone.H * SpriteH;
+        var width = w * SpriteW;
+        var height = h * SpriteH;
 
         var spriteMap = new Image<Rgba32>(width, height);
 
@@ -88,7 +90,32 @@ public class SpriteService
         spriteMap.SaveAsPng($"{SpritesheetFolder}/{output}", new PngEncoder());
         
         Console.WriteLine("Parsing map: "+zone);
-        //BuildSpritesheet(key, listBackground);
+    }
+    
+    public void BuildAnimation(Anim anim)
+    {
+        var width = anim.Tiles.Length * SpriteW;
+        var height = SpriteH;
+        var spriteMap = new Image<Rgba32>(width, height);
+        
+        for (var i = 0; i < anim.Tiles.Length; i++)
+        {
+            var d =  _tiles[anim.Tiles[i]].CloneAs<Rgba32>();
+                
+            for (var x = 0; x < SpriteH; x++)
+            {
+                for (var y = 0; y < SpriteW; y++)
+                {
+                    spriteMap[x + (i*SpriteW), y] = d[x, y];
+                }
+            }
+            
+            d.Dispose();
+        }
+        
+        var output = $"animation-{Guid.NewGuid().ToString()}.png";
+        
+        spriteMap.SaveAsPng($"{SpritesheetFolder}/{output}", new PngEncoder());
     }
     
     public void BuildSpritesheet()
@@ -140,4 +167,6 @@ public class SpriteService
         
         spriteSheet.SaveAsPng($"{SpritesheetFolder}/{output}", new PngEncoder());
     }
+
+    
 }

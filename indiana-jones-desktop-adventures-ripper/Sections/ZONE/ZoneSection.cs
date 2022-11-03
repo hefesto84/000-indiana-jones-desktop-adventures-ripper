@@ -84,7 +84,7 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.ZONE
                 zone.Tiles.Add(new int[]{backgroundTile,midgroundTile,foregroundTile});
             }
             
-            //_spriteService.BuildMap(zone);
+            //_spriteService.BuildMap(zone, zone.W, zone.H);
         }
         
         // 4 bytes -> zaux
