@@ -40,11 +40,7 @@ public class Puz2Section : Section
     private void ParsePuzSection(byte[] data, int k)
     {
         ParsePuzDialog(data, k);
-        //br.ReadBytes(12);
-        //var text = new string(br.ReadChars(data.Length));
     }
-
-    
     
     private void ParsePuzDialog(byte[] payload, int k)
     {
@@ -66,11 +62,17 @@ public class Puz2Section : Section
             }
         }
 
-        Console.WriteLine($"IPUZ-{k} Size: {payload.Length} Dialogs: {dialogs.Count}");
+        var unknown = br.ReadInt16();
+        var objectId = br.ReadInt16();
+        var unknown2 = br.ReadInt16();
+
+        Console.WriteLine($"IPUZ-{k} Size: {payload.Length} Dialogs: {dialogs.Count} Object ID: {objectId}");
         
-        for (var i = 0; i < dialogs.Count; i++)
+        foreach (var t in dialogs)
         {
-            Console.WriteLine($"==> {dialogs[i]}");
+            Console.WriteLine($"==> {t}");
         }
+        
+        Console.WriteLine("\n");
     }
 }
