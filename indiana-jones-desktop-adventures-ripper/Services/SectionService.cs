@@ -49,6 +49,7 @@ namespace indiana_jones_desktop_adventures_ripper.Services
 
         private void RegisterDawTypes()
         {
+            /*
             RegisterDawSection(new StupSection());
             RegisterDawSection(new SndsSection());
             RegisterDawSection(new TileSection(_spriteService));
@@ -67,6 +68,8 @@ namespace indiana_jones_desktop_adventures_ripper.Services
             RegisterDawSection(new ZnamSection());
             RegisterDawSection(new PnamSection());
             RegisterDawSection(new AnamSection());
+            */
+            RegisterDawSection(new Puz2Section());
         }
 
         private void RegisterExeTypes()
