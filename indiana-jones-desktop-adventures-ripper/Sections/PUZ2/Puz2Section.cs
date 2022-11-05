@@ -11,6 +11,7 @@ namespace indiana_jones_desktop_adventures_ripper.Sections.PUZ2;
 public class Puz2Section : Section
 {
     public override string Tag => "PUZ2";
+    private const int PuzMetadataSize = 6;
     
     public override void Parse(DataBlock dataBlock)
     {
@@ -43,17 +44,18 @@ public class Puz2Section : Section
         //var text = new string(br.ReadChars(data.Length));
     }
 
+    
+    
     private void ParsePuzDialog(byte[] payload, int k)
     {
         var ms = new MemoryStream(payload);
         var br = new BinaryReader(ms);
-
-
+        
         var dialogs = new List<string>();
         
         br.ReadBytes(10); // Unknown payload
         
-        while (br.BaseStream.Position != payload.Length)
+        while (br.BaseStream.Position != payload.Length - PuzMetadataSize)
         {
             var size = br.ReadInt16();
 
