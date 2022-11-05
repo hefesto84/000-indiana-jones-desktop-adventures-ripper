@@ -69,6 +69,7 @@ namespace indiana_jones_desktop_adventures_ripper.Services
             RegisterDawSection(new PnamSection());
             RegisterDawSection(new AnamSection());
             */
+            RegisterDawSection(new ChwpSection());
             RegisterDawSection(new Puz2Section());
         }
 
