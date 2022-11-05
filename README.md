@@ -23,8 +23,8 @@ The idea is having this data for anyone interested on do a remake of the origina
 | ZAX3        | ![](https://img.shields.io/badge/-PENDING-yellow)   | Unknown           |
 | ZAX4        | ![](https://img.shields.io/badge/-PENDING-yellow)   | Unknown           |
 | PNAM        | ![](https://img.shields.io/badge/-PENDING-yellow)    | Unknown           |
+| CHWP        | ![](https://img.shields.io/badge/-PENDING-yellow)    | Health, id?         |
 | HTSP        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown           |
-| CHWP        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown           |
 | CAUX        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown           |
 | ACTN        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown           |
 
