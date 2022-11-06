@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading;
 using indiana_jones_desktop_adventures_ripper.Models;
 using indiana_jones_desktop_adventures_ripper.Models.Base;
@@ -12,6 +13,7 @@ public class Puz2Section : Section
 {
     public override string Tag => "PUZ2";
     private const int PuzMetadataSize = 6;
+    private StringBuilder _sb;
     
     public override void Parse(DataBlock dataBlock)
     {
@@ -20,7 +22,7 @@ public class Puz2Section : Section
         var unknown = Br.ReadInt16();
 
         var k = 0;
-        
+        _sb = new StringBuilder();
         while (Ms.Position != dataBlock.Data.Length)
         {
             var ipuz = new string(Br.ReadChars(4));
@@ -35,6 +37,8 @@ public class Puz2Section : Section
         }
         
         Console.WriteLine($"PUZ Entries: {k}");
+        
+        File.WriteAllText("puz2-dump.txt",_sb.ToString());
     }
 
     private void ParsePuzSection(byte[] data, int k)
@@ -50,6 +54,8 @@ public class Puz2Section : Section
         var dialogs = new List<string>();
         
         br.ReadBytes(10); // Unknown payload
+
+        
         
         while (br.BaseStream.Position != payload.Length - PuzMetadataSize)
         {
@@ -66,13 +72,16 @@ public class Puz2Section : Section
         var objectId = br.ReadInt16();
         var unknown2 = br.ReadInt16();
 
+        _sb.AppendLine($"IPUZ-{k} Size: {payload.Length} Dialogs: {dialogs.Count} Object ID: {objectId}");
         Console.WriteLine($"IPUZ-{k} Size: {payload.Length} Dialogs: {dialogs.Count} Object ID: {objectId}");
         
         foreach (var t in dialogs)
         {
             Console.WriteLine($"==> {t}");
+            _sb.AppendLine($"==> {t}");
         }
         
         Console.WriteLine("\n");
+        
     }
 }

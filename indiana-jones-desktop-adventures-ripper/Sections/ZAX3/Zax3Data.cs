@@ -20,6 +20,23 @@ public class Zax3Data : Section
         while (Ms.Position != dataBlock.Data.Length)
         {
             var izx3 = new string(Br.ReadChars(4));
+            var size = Br.ReadInt32();
+            var numItems = Br.ReadInt16();
+           
+            Console.WriteLine($"IZX3 Map id: {k} - Size {size} : num items: {numItems}");
+
+            if (numItems != 0)
+            {
+                for (var i = 0; i < numItems; i++)
+                {
+                    var itemId = Br.ReadInt16();
+                    Console.WriteLine($"\\_{itemId}");
+                }
+            }
+
+            
+            /*
+            var izx3 = new string(Br.ReadChars(4));
             var size = Br.ReadInt16();
             var izx3Data = Br.ReadBytes(size - 6);
 
@@ -29,6 +46,7 @@ public class Zax3Data : Section
             {
                 File.WriteAllBytes("izax3-aux.dat",izx3Data);
             }
+            */
             k++;
         }
         

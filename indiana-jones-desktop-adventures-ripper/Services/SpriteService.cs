@@ -14,11 +14,27 @@ public class SpriteService
 {
     private const int SpriteW = 32;
     private const int SpriteH = 32;
-    private const string SpritesFolder = "Tiles/";
+    private const string TilesFolder = "Tiles/";
+    private const string MapsFolder = "Maps/";
     private const string SpritesheetFolder = "Spritesheet/";
     private const string AnimationsFolder = "Animations/";
     private Dictionary<int, Image> _tiles = new Dictionary<int, Image>();
     private Palette _palette;
+
+    public SpriteService()
+    {
+        if (!Directory.Exists($"{AnimationsFolder}")) Directory.CreateDirectory(AnimationsFolder);
+        if (!Directory.Exists($"{SpritesheetFolder}")) Directory.CreateDirectory(SpritesheetFolder);
+        if (!Directory.Exists($"{MapsFolder}")) Directory.CreateDirectory(MapsFolder);
+        if (!Directory.Exists($"{TilesFolder}")) Directory.CreateDirectory(TilesFolder);
+        
+        /*
+        Directory.Delete(AnimationsFolder,true);
+        Directory.Delete(SpritesheetFolder,true);
+        Directory.Delete(MapsFolder,true);
+        Directory.Delete(TilesFolder,true);
+        */
+    }
     
     public void SetPalette(Palette palette)
     {
@@ -45,7 +61,7 @@ public class SpriteService
             img[x, y] = pixelData == 0 ? new Rgba32(255, 255, 255, 0) : new Rgba32(pixelColor.R, pixelColor.G, pixelColor.B, 255);
         }
 
-        img.SaveAsPng($"{SpritesFolder}/{key}.png", new PngEncoder());
+        img.SaveAsPng($"{TilesFolder}/{key}.png", new PngEncoder());
         
         _tiles.Add(key,img);
     }
@@ -87,9 +103,7 @@ public class SpriteService
         
         var output = $"spritemap-{zone.K}.png";
         
-        spriteMap.SaveAsPng($"{SpritesheetFolder}/{output}", new PngEncoder());
-        
-        Console.WriteLine("Parsing map: "+zone);
+        spriteMap.SaveAsPng($"{MapsFolder}/{output}", new PngEncoder());
     }
     
     public void BuildAnimation(Anim anim)
@@ -115,7 +129,7 @@ public class SpriteService
         
         var output = $"animation-{Guid.NewGuid().ToString()}.png";
         
-        spriteMap.SaveAsPng($"{SpritesheetFolder}/{output}", new PngEncoder());
+        spriteMap.SaveAsPng($"{AnimationsFolder}/{output}", new PngEncoder());
     }
     
     public void BuildSpritesheet()
