@@ -17,10 +17,10 @@ The idea is having this data for anyone interested on do a remake of the origina
 | ZONE        | ![](https://img.shields.io/badge/-DONE-green)    | Maps (png)        |
 | CHAR        | ![](https://img.shields.io/badge/-DONE-green)    | Animations        |
 | ZNAM        | ![](https://img.shields.io/badge/-DONE-green)    | Map names         |
+| ZAX3        | ![](https://img.shields.io/badge/-DONE-green)   | PNJ Id by Map     |
 | PUZ2        | ![](https://img.shields.io/badge/-DONE-green)            | Dialogs and Items |
-| ZAUX        | ![](https://img.shields.io/badge/-PENDING-yellow) | Unknown           |
 | ZAX2        | ![](https://img.shields.io/badge/-PENDING-yellow)  | Map items?        |
-| ZAX3        | ![](https://img.shields.io/badge/-PENDING-yellow)   | Unknown           |
+| ZAUX        | ![](https://img.shields.io/badge/-PENDING-yellow) | Unknown           |
 | ZAX4        | ![](https://img.shields.io/badge/-PENDING-yellow)   | Unknown           |
 | PNAM        | ![](https://img.shields.io/badge/-PENDING-yellow)    | Unknown           |
 | HTSP        | ![](https://img.shields.io/badge/-TODO-red)            | Unknown           |
