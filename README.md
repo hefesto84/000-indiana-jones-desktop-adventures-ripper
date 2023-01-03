@@ -1,8 +1,8 @@
 # Indiana Jones and Desktop Adventures Ripper
 
-This project has been created to extract all the assets from the game Indiana Jones and Desktop Adventures.
+This project has been created to extract all game assets from Indiana Jones and Desktop Adventures.
 
-The idea is having this data for anyone interested on do a remake of the original game.
+The idea is to have this data for anyone interested in making a remake of the original game.
 
 ## Section Status
 
